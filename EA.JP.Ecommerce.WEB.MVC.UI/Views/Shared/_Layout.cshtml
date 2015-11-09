@@ -1,0 +1,52 @@
+﻿@using EA.JP.Ecommerce.WEB.MVC.UI.Helpers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> @RenderSection("TitleContent", required: false)</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+   <!--<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" /> --> 
+    <!--<script src="~/Scripts/modernizr-2.6.2.js"></script> /Content/Images/Structure/logo.png /Content/Images/Products/product-lifestyle.jpg -->
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <span>
+                <a href="@Html.Resolve(" ")">
+                    <img alt="Agatha's Clothing Store"
+                         src="@Html.Resolve("/Content/Images/Structure/logo.png")"
+                    border="0" />
+                </a>
+            </span>
+        </div>
+
+        <div id="headerSummary">
+            @RenderSection("headerBasketSummary", required: false)
+        </div>
+        <div class="topBarContainer">
+            <div id="background">
+                <div id="navigation">
+                    @RenderSection("MenuContent", required: false)
+                </div>
+                <div id="content">
+                    @RenderBody()
+                </div>
+                <div style="clear: both;" />
+            </div>
+        </div>
+       @{
+           Html.RenderPartial("~/Views/Shared/SiteFooter.cshtml");
+       }
+    </div>
+
+    
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/jquery-jtemplates.js"></script>
+    <script src="~/Scripts/json2.js"></script>
+    <script src="~/Scripts/JPECommerce-common-scripts.js"></script>
+</body>
+</html>

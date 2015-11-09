@@ -1,0 +1,30 @@
+﻿@using EA.JP.Ecommerce.Controllers.ViewModels.ProductCatalog
+@model  BaseProductCatalogPageView
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section TitleContent
+{
+ @RenderSection("TitleContent", required: false)
+}
+   
+<div id="content">
+    @RenderBody()
+</div>
+
+@section headerBasketSummary
+{
+   @RenderSection("headerBasketSummary", required: false)
+}
+
+@section MenuContent
+{
+    @{
+        Html.RenderPartial("~/Views/Shared/Categories.cshtml", ((BaseProductCatalogPageView)Model).Categories);
+        @RenderSection("MenuContent", required: false)
+    }
+}
+

@@ -1,0 +1,75 @@
+﻿@using Enterprise.Architecture.AR.Model
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="jumbotron col-sm-10 col-sm-offset-1">
+        <h2>Active Recorde BLL Design Pattern</h2>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1">
+        <img src="~/Content/Active_Record_Diagram.png" />
+    </div>
+</div>
+
+<div class="col-sm-10 col-sm-offset-2">
+    <div id="document">
+      
+<div id="nav">@Html.ActionLink("Create New Post", "Create")</div>
+       
+    </div>
+    <div id="content">
+        <h2>@Html.Encode(((Post)ViewData["LatestPost"]).Subject)</h2>
+        @Html.Encode(((Post)ViewData["LatestPost"]).Text.Replace("\n", "<br />"))
+        <br /><i>posted on  @(((Post)ViewData["LatestPost"]).DateAdded.ToLongDateString()) </i>
+        <hr />
+        Comments<br />
+        @foreach (var item in ((Post)ViewData["LatestPost"]).Comments)
+        {
+            <p>
+                <i>@Html.Encode(item.Author) said on @(item.DateAdded.ToLongDateString())  at @(item.DateAdded.ToShortTimeString()) ...</i><br />
+                @Html.Encode(item.Text)
+            </p>
+        }
+
+        <p>Add a comment</p>
+        @using (Html.BeginForm("CreateComment", "Blog", new { Id = ((Post)ViewData["LatestPost"]).Id }, FormMethod.Post))
+        {
+            <p>
+                Your name<br />
+                @Html.TextBox("Author")
+            </p>
+
+            <p>
+                Your comment<br />
+                @Html.TextArea("Comment")
+            </p>
+
+            <p>
+                <input type="submit" value="Add Comment" />
+
+            </p>
+        }
+        <br />
+        @Html.ActionLink("Add New Post", "Create")
+    </div>
+    <div id="rightNav">
+        <h2>All Posts</h2>
+        <ul>
+            @foreach (var item in (Post[])ViewData["AllPosts"])
+            {
+                <li>
+                    @Html.ActionLink(item.Subject, "Detail", new { Id = item.Id })
+                    <br />
+                    @Html.Encode(item.ShortText)
+                </li>
+            }
+        </ul>
+    </div>
+
+
+
+</div>
+   
+
+

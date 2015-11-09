@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "AddPost";
+}
+
+<h2>AddPost</h2>
+
+    @using (Html.BeginForm())
+    {
+    <p>
+        Subject<br />
+        @Html.TextBox("Subject")
+    </p>
+
+    <p>
+        Content<br />
+        @Html.TextArea("Content")
+    </p>
+
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+    }
+
+
+
+

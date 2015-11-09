@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FE5D67F-FA3A-4878-A431-D3650CBD02A5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EA.DAL.ORM.Library.Services</RootNamespace>
+    <AssemblyName>EA.DAL.ORM.Library.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LibraryService.cs" />
+    <Compile Include="Mapper\BookExtensionMethods.cs" />
+    <Compile Include="Mapper\BookTitleExtensionMethods.cs" />
+    <Compile Include="Mapper\LoanExtensionMethods.cs" />
+    <Compile Include="Mapper\MemberExtensionMethods.cs" />
+    <Compile Include="Messages\AddBookRequest.cs" />
+    <Compile Include="Messages\AddBookResponse.cs" />
+    <Compile Include="Messages\AddBookTitleRequest.cs" />
+    <Compile Include="Messages\AddBookTitleResponse.cs" />
+    <Compile Include="Messages\AddMemberRequest.cs" />
+    <Compile Include="Messages\AddMemberResponse.cs" />
+    <Compile Include="Messages\FindBooksRequest.cs" />
+    <Compile Include="Messages\FindBooksResponse.cs" />
+    <Compile Include="Messages\FindBookTitlesRequest.cs" />
+    <Compile Include="Messages\FindBookTitlesResponse.cs" />
+    <Compile Include="Messages\FindMemberRequest.cs" />
+    <Compile Include="Messages\FindMembersResponse.cs" />
+    <Compile Include="Messages\LoanBookRequest.cs" />
+    <Compile Include="Messages\LoanBookResponse.cs" />
+    <Compile Include="Messages\ResponseBase.cs" />
+    <Compile Include="Messages\ReturnBookRequest.cs" />
+    <Compile Include="Messages\ReturnBookResponse.cs" />
+    <Compile Include="Views\MemberView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\BookTitleView.cs" />
+    <Compile Include="Views\BookView.cs" />
+    <Compile Include="Views\LoanView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EA.DAL.ORM.Library.Infrastructure\EA.DAL.ORM.Library.Infrastructure.csproj">
+      <Project>{9cdc3005-49d9-45f3-9c84-99df864275f0}</Project>
+      <Name>EA.DAL.ORM.Library.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EA.DAL.ORM.Library.Model\EA.DAL.ORM.Library.Model.csproj">
+      <Project>{292b19f5-9eef-43cf-9756-fd15cca7547e}</Project>
+      <Name>EA.DAL.ORM.Library.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EA.DAL.ORM.Library.Repository.EF\EA.DAL.ORM.Library.Repository.EF.csproj">
+      <Project>{28b51e6e-2bb1-45b5-b3e1-f316b04bd84b}</Project>
+      <Name>EA.DAL.ORM.Library.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EA.DAL.ORM.Library.Repository.NH\EA.DAL.ORM.Library.Repository.NH.csproj">
+      <Project>{7b617422-99fe-4193-b904-38e1fa067c3a}</Project>
+      <Name>EA.DAL.ORM.Library.Repository.NH</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

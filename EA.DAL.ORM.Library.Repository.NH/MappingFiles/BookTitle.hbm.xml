@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="EA.DAL.ORM.Library.Model"
+        assembly="EA.DAL.ORM.Library.Model">
+
+  <class name="EA.DAL.ORM.Library.Model.BookTitle" table="t_Books" lazy="false" >
+
+    <id  name="ISBN" column="ISBN" type="String">
+      <generator class="assigned" />
+    </id>
+
+    <property name="Title">
+      <column name="Title" sql-type="nvarchar(50)" not-null="true" />
+    </property>
+
+  </class>
+ 
+
+</hibernate-mapping>
