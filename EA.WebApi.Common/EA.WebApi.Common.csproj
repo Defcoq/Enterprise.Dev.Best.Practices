@@ -52,9 +52,11 @@
     <Compile Include="BusinessRuleViolationException.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DateTimeAdapter.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="IDateTime.cs" />
     <Compile Include="logging\ILogManager.cs" />
     <Compile Include="logging\LogManagerAdapter.cs" />
+    <Compile Include="PrimitiveTypeParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\IUserSession.cs" />
     <Compile Include="Security\IWebUserSession.cs" />

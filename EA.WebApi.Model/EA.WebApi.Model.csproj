@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="ILinkContaining.cs" />
     <Compile Include="InquiryProcessing\ITaskByIdInquiryProcessor.cs" />
+    <Compile Include="IPageLinkContaining.cs" />
     <Compile Include="Link.cs" />
+    <Compile Include="PagedDataInquiryResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Task.cs" />

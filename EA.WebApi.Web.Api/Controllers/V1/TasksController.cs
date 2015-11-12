@@ -1,6 +1,9 @@
 ﻿using EA.WebApi.Common;
 using EA.WebApi.Data.Entities;
+using EA.WebApi.Data.QueryProcessors;
+using EA.WebApi.Model;
 using EA.WebApi.Model.InquiryProcessing;
+using EA.WebApi.Web.Api.InquiryProcessing;
 using EA.WebApi.Web.Api.MaintenanceProcessing;
 using EA.WebApi.Web.Api.Models;
 using EA.WebApi.Web.Common;
@@ -23,16 +26,33 @@ namespace EA.WebApi.Web.Api.Controllers.V1
         private readonly IAddTaskMaintenanceProcessor _addTaskMaintenanceProcessor;
         private readonly ITaskByIdInquiryProcessor _taskByIdInquiryProcessor;
         private readonly IUpdateTaskMaintenanceProcessor _updateTaskMaintenanceProcessor;
+        private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
+        private readonly IAllTasksInquiryProcessor _allTasksInquiryProcessor;
 
-       
+
+
         public TasksController(IAddTaskMaintenanceProcessor addTaskMaintenanceProcessor,
-        ITaskByIdInquiryProcessor taskByIdInquiryProcessor, IUpdateTaskMaintenanceProcessor updateTaskMaintenanceProcessor)
+        ITaskByIdInquiryProcessor taskByIdInquiryProcessor, IUpdateTaskMaintenanceProcessor updateTaskMaintenanceProcessor, IPagedDataRequestFactory pagedDataRequestFactory,
+IAllTasksInquiryProcessor allTasksInquiryProcessor
+)
         {
             _addTaskMaintenanceProcessor = addTaskMaintenanceProcessor;
             _taskByIdInquiryProcessor = taskByIdInquiryProcessor;
             _updateTaskMaintenanceProcessor = updateTaskMaintenanceProcessor;
+            _pagedDataRequestFactory = pagedDataRequestFactory;
+            _allTasksInquiryProcessor = allTasksInquiryProcessor;
+
 
         }
+
+        [Route("", Name = "GetTasksRoute")]
+        public PagedDataInquiryResponse<EA.WebApi.Model.Task> GetTasks(HttpRequestMessage requestMessage)
+        {
+            var request = _pagedDataRequestFactory.Create(requestMessage.RequestUri);
+            var tasks = _allTasksInquiryProcessor.GetTasks(request);
+            return tasks;
+        }
+
 
         [Route("", Name = "AddTaskRoute")]
         [HttpPost]
@@ -55,7 +75,7 @@ namespace EA.WebApi.Web.Api.Controllers.V1
         [HttpPut]
         [HttpPatch]
         [Authorize(Roles = Constants.RoleNames.SeniorWorker)]
-        public Task UpdateTask(long id, [FromBody] object updatedTask)
+        public EA.WebApi.Model.Task UpdateTask(long id, [FromBody] object updatedTask)
         {
             var task = _updateTaskMaintenanceProcessor.UpdateTask(id, updatedTask);
             return task;
