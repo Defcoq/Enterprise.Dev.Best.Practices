@@ -11,6 +11,9 @@ using EA.JP.Ecommerce.Infrastructure.Email;
 using EA.JP.Ecommerce.Model.Basket;
 using EA.JP.Ecommerce.Model.Shipping;
 using EA.JP.Ecommerce.Infrastructure.CookieStorage;
+using EA.JP.Ecommerce.Model.Customers;
+using EA.JP.Ecommerce.Infrastructure.Authentication;
+using EA.JP.Ecommerce.Controllers.ActionArguments;
 
 namespace EA.JP.Ecommerce.WEB.MVC.UI
 {
@@ -29,7 +32,8 @@ namespace EA.JP.Ecommerce.WEB.MVC.UI
         {
             public ControllerRegistry()
             {
-                // Repositories   
+                // Repositories
+                For<ICustomerRepository>().Use<Repository.NH.Repositories.CustomerRepository>();
                 For<IBasketRepository>().Use<Repository.NH.Repositories.BasketRepository>();
                 For<IDeliveryOptionRepository>().Use<Repository.NH.Repositories.DeliveryOptionRepository>();
 
@@ -51,6 +55,16 @@ namespace EA.JP.Ecommerce.WEB.MVC.UI
 
                 // Email Service                 
                 For<IEmailService>().Use<TextLoggingEmailService>();
+
+                For<ICustomerService>().Use<CustomerService>();
+
+                // Authentication
+                For<IExternalAuthenticationService>().Use<JanrainAuthenticationService>();
+                For<IFormsAuthentication>().Use<AspFormsAuthentication>();
+                For<ILocalAuthenticationService>().Use<AspMembershipAuthentication>();
+
+                // Controller Helpers
+                For<IActionArguments>().Use<HttpRequestActionArguments>();
             }
         }
     }

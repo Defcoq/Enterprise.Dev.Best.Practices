@@ -9,6 +9,14 @@ namespace EA.JP.Ecommerce.Infrastructure.Configuration
 {
     public class WebConfigApplicationSettings : IApplicationSettings
     {
+        public string JanrainApiKey
+        {
+            get
+            {
+               return ConfigurationManager.AppSettings["JanRainApiKey"];
+            }
+        }
+
         public string LoggerName
         {
             get { return ConfigurationManager.AppSettings["LoggerName"]; }

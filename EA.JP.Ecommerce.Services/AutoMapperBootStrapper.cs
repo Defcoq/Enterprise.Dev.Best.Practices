@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EA.JP.Ecommerce.Model.Basket;
 using EA.JP.Ecommerce.Model.Categories;
+using EA.JP.Ecommerce.Model.Customers;
 using EA.JP.Ecommerce.Model.Products;
 using EA.JP.Ecommerce.Model.Shipping;
 using EA.JP.Ecommerce.Services.ViewModels;
@@ -31,6 +32,9 @@ namespace EA.JP.Ecommerce.Services
             Mapper.CreateMap<DeliveryOption, DeliveryOptionView>();
             Mapper.CreateMap<BasketItem, BasketItemView>();
             Mapper.CreateMap<Basket, BasketView>();
+
+            Mapper.CreateMap<Customer, CustomerView>();
+            Mapper.CreateMap<DeliveryAddress, DeliveryAddressView>();
 
             // Global Money Formatter
             //Mapper.AddFormatter<MoneyFormatter>();

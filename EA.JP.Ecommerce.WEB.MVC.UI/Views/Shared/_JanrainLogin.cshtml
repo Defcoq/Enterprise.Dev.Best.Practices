@@ -1,0 +1,14 @@
+﻿@using EA.JP.Ecommerce.Controllers.ViewModels.Account
+@using EA.JP.Ecommerce.WEB.MVC.UI.Helpers
+@model CallBackSettings
+@{
+
+    var jarainUrl = string.Format("https://ea-jp-ecommerce.rpxnow.com/openid/embed?token_url={0}/?returnUrl={1}", Server.UrlDecode(Html.Resolve('/' + Model.Controller + '/' + Model.Action)), Model.ReturnUrl);
+ }
+
+<iframe src=@jarainUrl scrolling="no" frameBorder="no" allowtransparency="true"
+        style="width:400px;height:240px"></iframe>
+
+    @*<iframe src="https://ea-jp-ecommerce.rpxnow.com/openid/embed?token_url=@Server.UrlEncode(Html.Resolve("/" + Model.Controller +"/" + Model.Action + "/?returnUrl=" + Model.ReturnUrl))"
+    scrolling="no" frameBorder="no" allowtransparency="true"
+    style="width:400px;height:240px"></iframe>*@

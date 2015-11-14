@@ -22,6 +22,14 @@
         </div>
 
         <div id="headerSummary">
+            <span class="basket-details">
+                @if (Request.IsAuthenticated) {
+                @Html.ActionLink("Your Account", "Detail", "Customer") <span>/</span>   @Html.ActionLink("Log Off", "SignOut", "AccountLogOn");
+                 }
+                else {
+                 @Html.ActionLink("Create Account", "Register","AccountRegister") <span>/</span>  @Html.ActionLink("Log On", "LogOn", "AccountLogOn");<br />
+                }
+            </span>   
             @RenderSection("headerBasketSummary", required: false)
         </div>
         <div class="topBarContainer">

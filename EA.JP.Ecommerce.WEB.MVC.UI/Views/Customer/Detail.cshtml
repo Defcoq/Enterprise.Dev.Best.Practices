@@ -1,0 +1,35 @@
+﻿@using EA.JP.Ecommerce.Controllers.ViewModels.CustomerAccount
+@model CustomerDetailView
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_CustomerAccount.cshtml";
+}
+
+@section TitleContent
+{
+    Customer Details
+}
+
+
+        <h2>Your Details</h2>
+
+        @using (Html.BeginForm()) {
+        <p>
+            <label for="FirstName">FirstName:</label><br />
+            @Html.TextBox("FirstName", Model.Customer.FirstName) 
+        </p>
+        <p>
+            <label for="SecondName">SecondName:</label><br />
+            @Html.TextBox("SecondName", Model.Customer.SecondName)
+        </p>
+        <p>
+            <label for="Email">Email:</label><br />
+            @Html.TextBox("Email", Model.Customer.Email)
+        </p>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+        } 
+
+

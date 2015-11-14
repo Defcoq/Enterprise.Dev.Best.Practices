@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="AddressBusinessRules.cs" />
     <Compile Include="Basket\Basket.cs" />
     <Compile Include="Basket\BasketBusinessRules.cs" />
     <Compile Include="Basket\BasketItem.cs" />
@@ -53,6 +55,13 @@
     <Compile Include="Categories\Category.cs" />
     <Compile Include="Categories\ICategoryRepository.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Customers\Customer.cs" />
+    <Compile Include="Customers\CustomerBusinessRules.cs" />
+    <Compile Include="Customers\DeliveryAddress.cs" />
+    <Compile Include="Customers\DeliveryAddressBusinessRules.cs" />
+    <Compile Include="Customers\EmailValidationSpecification.cs" />
+    <Compile Include="Customers\ICustomerRepository.cs" />
+    <Compile Include="Customers\InvalidAddressException.cs" />
     <Compile Include="Products\Brand.cs" />
     <Compile Include="Products\IProductAttribute.cs" />
     <Compile Include="Products\IProductRepository.cs" />

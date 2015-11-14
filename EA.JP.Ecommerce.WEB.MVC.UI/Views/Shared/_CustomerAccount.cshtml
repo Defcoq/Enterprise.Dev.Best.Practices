@@ -1,0 +1,26 @@
+﻿@using EA.JP.Ecommerce.Controllers.ViewModels.CustomerAccount
+@model BaseCustomerAccountView
+@{
+    ViewBag.Title = "_CustomerAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section  TitleContent
+{
+@RenderSection("TitleContent")
+}
+
+@section  headerBasketSummary
+{
+   @{
+    Html.RenderPartial("~/Views/Shared/_BasketSummary.cshtml",((BaseCustomerAccountView)Model).BasketSummary); 
+   }
+}
+
+@section  MenuContent
+{
+   @{
+       Html.RenderPartial("~/Views/Shared/_CustomerMenu.cshtml");
+    }
+}
+@RenderBody()

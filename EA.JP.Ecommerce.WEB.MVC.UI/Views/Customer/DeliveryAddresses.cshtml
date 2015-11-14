@@ -1,0 +1,34 @@
+﻿@using EA.JP.Ecommerce.Controllers.ViewModels.CustomerAccount
+@using EA.JP.Ecommerce.Services.ViewModels
+@model CustomerDetailView
+@{
+    ViewBag.Title = "DeliveryAddresses";
+    Layout = "~/Views/Shared/_CustomerAccount.cshtml";
+}
+
+@section TitleContent
+{
+    Customer Delivery Address Book
+}
+
+
+
+        <h2>Delivery Addresses</h2>
+
+        @Html.ActionLink("Add new address", "AddDeliveryAddress", "Customer")
+
+        <ul>
+            @foreach (DeliveryAddressView deliveryAddress in
+            Model.Customer.DeliveryAddressBook)
+            {
+            
+            <li>
+                @Html.ActionLink(deliveryAddress.Name, "EditDeliveryAddress",
+                "Customer",
+                new { deliveryAddressId = deliveryAddress.Id }, null)
+            </li>
+            }
+        </ul>
+
+    
+

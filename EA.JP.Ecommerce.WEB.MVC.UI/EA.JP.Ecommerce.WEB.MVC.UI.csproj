@@ -200,6 +200,16 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_BasketSummary.cshtml" />
     <Content Include="Views\Basket\View.cshtml" />
+    <Content Include="Views\Shared\_CustomerMenu.cshtml" />
+    <Content Include="Views\Shared\_CustomerAccount.cshtml" />
+    <Content Include="Views\Shared\_AddressEdit.cshtml" />
+    <Content Include="Views\Customer\Detail.cshtml" />
+    <Content Include="Views\Customer\DeliveryAddresses.cshtml" />
+    <Content Include="Views\Customer\AddDeliveryAddress.cshtml" />
+    <Content Include="Views\Customer\EditDeliveryAddress.cshtml" />
+    <Content Include="Views\Shared\_JanrainLogin.cshtml" />
+    <Content Include="Views\AccountLogOn\LogOn.cshtml" />
+    <Content Include="Views\AccountRegister\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
