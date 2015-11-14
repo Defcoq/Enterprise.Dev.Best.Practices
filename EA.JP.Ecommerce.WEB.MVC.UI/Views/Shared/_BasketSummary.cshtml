@@ -1,0 +1,20 @@
+﻿@using EA.JP.Ecommerce.Controllers.ViewModels
+@model  BasketSummaryView
+
+    <div id="smoverlay" class="smoverlay"></div>
+    <div id="basketSummary">
+        <span class="basket-details">
+            @Html.ActionLink("Your Basket", "Detail", "Basket")
+            <span id="basket-summary-text">
+                @if(Model.NumberOfItems == 0 )
+                {
+                  <span> is empty</span>
+                }
+                else
+                {
+                    <span>@Model.NumberOfItems Item(s)at @Model.BasketTotal</span>  
+                }
+            </span>
+        </span>
+    </div>
+

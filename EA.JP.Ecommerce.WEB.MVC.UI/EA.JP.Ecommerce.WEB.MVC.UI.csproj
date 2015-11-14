@@ -102,9 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Shop.mdf" />
-    <Content Include="App_Data\Shop_log.ldf">
-      <DependentUpon>Shop.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\Shop_log.LDF" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Products\1.jpg" />
@@ -114,7 +112,9 @@
     <Content Include="Content\Images\Products\5.jpg" />
     <Content Include="Content\Images\Products\6.jpg" />
     <Content Include="Content\Images\Products\product-lifestyle.jpg" />
+    <Content Include="Content\Images\Structure\ajax-loader.gif" />
     <Content Include="Content\Images\Structure\background.gif" />
+    <Content Include="Content\Images\Structure\lg_logo.png" />
     <Content Include="Content\Images\Structure\logo.png" />
     <Content Include="Content\Images\Structure\modal-background.png" />
     <Content Include="Content\Images\Structure\refinement-available.gif" />
@@ -122,6 +122,7 @@
     <Content Include="Content\Images\Structure\refinement-selected.gif" />
     <Content Include="Content\Images\Structure\refinement-selecteddisabled.gif" />
     <Content Include="Content\Images\Structure\retro_background.gif" />
+    <Content Include="Content\Images\Structure\sm-ajax-loader.gif" />
     <Content Include="Content\Images\Structure\sm_logo.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -197,6 +198,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\_BasketSummary.cshtml" />
+    <Content Include="Views\Basket\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

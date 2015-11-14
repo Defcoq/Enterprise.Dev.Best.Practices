@@ -14,7 +14,22 @@
 
 }
 
+<script type="text/javascript">
+        function addProductToBasket() {
 
+            showOverlay("smoverlay", "basketSummary", 5);
+
+            var postData = { productId: $("#productsizes").val() };
+
+            $.post('@Html.Resolve("/Basket/AddToBasket")',postData, updateBasket, "json");
+        }
+
+        function updateBasket(basketSummaryView) {
+
+            updateBasketSummary(basketSummaryView);
+            hideOverlay("smoverlay");
+        }
+</script>
         <h2>@Model.Product.BrandName @Model.Product.Name</h2>
 
         <div>
@@ -32,7 +47,8 @@
                         }
                     </select>
 
-                    <input type="button" value="+ Add to cart" />
+                    <input type="button" value="+ Add to cart"
+                           onclick="JavaScript:addProductToBasket();" />
                 </p>
                 <p>
                     * - Rutrum mattis nulla sodales<br />

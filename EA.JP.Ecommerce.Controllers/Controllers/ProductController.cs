@@ -1,6 +1,7 @@
 ﻿using EA.JP.Ecommerce.Controllers.JsonDTOs;
 using EA.JP.Ecommerce.Controllers.ViewModels.ProductCatalog;
 using EA.JP.Ecommerce.Infrastructure.Configuration;
+using EA.JP.Ecommerce.Infrastructure.CookieStorage;
 using EA.JP.Ecommerce.Services.Interfaces;
 using EA.JP.Ecommerce.Services.Messaging.ProductCatalogService;
 using EA.JP.Ecommerce.Services.ViewModels;
@@ -17,11 +18,13 @@ namespace EA.JP.Ecommerce.Controllers.Controllers
     {
         private readonly IProductCatalogService _productService;
 
-        public ProductController(IProductCatalogService productService)
-            : base(productService)
+        public ProductController(IProductCatalogService productService,
+                                 ICookieStorageService cookieStorageService)
+            : base(cookieStorageService, productService)
         {
             _productService = productService;
         }
+
 
         public ActionResult GetProductsByCategory(int categoryId)
         {
@@ -43,6 +46,7 @@ namespace EA.JP.Ecommerce.Controllers.Controllers
             ProductSearchResultView productSearchResultView =
                                               new ProductSearchResultView();
 
+            productSearchResultView.BasketSummary = base.GetBasketSummaryView();
             productSearchResultView.Categories = base.GetCategories();
             productSearchResultView.CurrentPage = response.CurrentPage;
             productSearchResultView.NumberOfTitlesFound = response.NumberOfTitlesFound;
@@ -130,6 +134,7 @@ namespace EA.JP.Ecommerce.Controllers.Controllers
             ProductView productView = response.Product;
 
             productDetailView.Product = productView;
+            productDetailView.BasketSummary = base.GetBasketSummaryView();
             productDetailView.Categories = base.GetCategories();
 
             return View(productDetailView);

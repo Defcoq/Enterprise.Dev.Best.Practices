@@ -63,6 +63,8 @@
     <Compile Include="Configuration\ApplicationSettingsFactory.cs" />
     <Compile Include="Configuration\IApplicationSettings.cs" />
     <Compile Include="Configuration\WebConfigApplicationSettings.cs" />
+    <Compile Include="CookieStorage\CookieStorageService.cs" />
+    <Compile Include="CookieStorage\ICookieStorageService.cs" />
     <Compile Include="Domain\BusinessRule.cs" />
     <Compile Include="Domain\EntityBase.cs" />
     <Compile Include="Domain\IAggregateRoot.cs" />
@@ -94,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
-    <Folder Include="CookieStorage\" />
     <Folder Include="Payments\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

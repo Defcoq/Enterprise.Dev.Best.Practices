@@ -17,7 +17,14 @@
 
 @section headerBasketSummary
 {
-   @RenderSection("headerBasketSummary", required: false)
+
+ @{
+     Html.RenderPartial("~/Views/Shared/_BasketSummary.cshtml", ((BaseProductCatalogPageView)Model).BasketSummary);
+    @RenderSection("headerBasketSummary", required: false)
+}
+   
+
+  
 }
 
 @section MenuContent

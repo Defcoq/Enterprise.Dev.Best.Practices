@@ -63,7 +63,9 @@
   <ItemGroup>
     <Compile Include="NHUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BasketRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\DeliveryOptionRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ProductTitleRepository.cs" />
     <Compile Include="Repositories\QueryTranslator.cs" />
@@ -95,7 +97,13 @@
     <EmbeddedResource Include="Mapping\ProductSize.hbm.xml" />
     <EmbeddedResource Include="Mapping\ProductTitle.hbm.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\Basket.hbm.xml" />
+    <EmbeddedResource Include="Mapping\BasketItem.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Courier.hbm.xml" />
+    <EmbeddedResource Include="Mapping\DeliveryOption.hbm.xml" />
+    <EmbeddedResource Include="Mapping\ShippingService.hbm.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

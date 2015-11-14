@@ -1,4 +1,5 @@
 ﻿using EA.JP.Ecommerce.Controllers.ViewModels.ProductCatalog;
+using EA.JP.Ecommerce.Infrastructure.CookieStorage;
 using EA.JP.Ecommerce.Services.Interfaces;
 using EA.JP.Ecommerce.Services.Messaging.ProductCatalogService;
 using System;
@@ -14,16 +15,19 @@ namespace EA.JP.Ecommerce.Controllers.Controllers
     {
         private readonly IProductCatalogService _productCatalogService;
 
-        public HomeController(IProductCatalogService productCatalogService)
-            : base(productCatalogService)
+        public HomeController(IProductCatalogService productCatalogService,
+                               ICookieStorageService cookieStorageService)
+            : base(cookieStorageService, productCatalogService)
         {
             _productCatalogService = productCatalogService;
         }
+
 
         public ActionResult Index()
         {
             HomePageView homePageView = new HomePageView();
             homePageView.Categories = base.GetCategories();
+            homePageView.BasketSummary = base.GetBasketSummaryView();
 
             GetFeaturedProductsResponse response =
                            _productCatalogService.GetFeaturedProducts();

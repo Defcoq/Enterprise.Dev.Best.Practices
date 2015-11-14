@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using EA.JP.Ecommerce.Model.Basket;
 using EA.JP.Ecommerce.Model.Categories;
 using EA.JP.Ecommerce.Model.Products;
+using EA.JP.Ecommerce.Model.Shipping;
 using EA.JP.Ecommerce.Services.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -26,8 +28,12 @@ namespace EA.JP.Ecommerce.Services
             // IProductAttribute
             Mapper.CreateMap<IProductAttribute, Refinement>();
 
+            Mapper.CreateMap<DeliveryOption, DeliveryOptionView>();
+            Mapper.CreateMap<BasketItem, BasketItemView>();
+            Mapper.CreateMap<Basket, BasketView>();
+
             // Global Money Formatter
-           //Mapper.AddFormatter<MoneyFormatter>();
+            //Mapper.AddFormatter<MoneyFormatter>();
 
         }
     }

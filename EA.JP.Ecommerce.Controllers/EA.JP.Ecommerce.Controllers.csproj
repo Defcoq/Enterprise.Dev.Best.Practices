@@ -63,16 +63,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasePageView.cs" />
+    <Compile Include="BasketMapper.cs" />
+    <Compile Include="BasketSummaryView.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCatalogBaseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="CookieDataKeys.cs" />
     <Compile Include="IoCControllerFactory.cs" />
+    <Compile Include="JsonDTOs\JsonBasketItemUpdateRequest.cs" />
+    <Compile Include="JsonDTOs\JsonBasketQtyUpdateRequest.cs" />
+    <Compile Include="JsonDTOs\JsonDtoMapper.cs" />
     <Compile Include="JsonDTOs\MvcExtensions.cs" />
     <Compile Include="JsonDTOs\JsonModelBinder.cs" />
     <Compile Include="JsonDTOs\JsonProductSearchRequest.cs" />
     <Compile Include="JsonDTOs\JsonRefinementGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ProductCatalog\BaseProductCatalogPageView.cs" />
+    <Compile Include="ViewModels\ProductCatalog\BasketDetailView.cs" />
     <Compile Include="ViewModels\ProductCatalog\HomePageView.cs" />
     <Compile Include="ViewModels\ProductCatalog\ProductDetailView.cs" />
     <Compile Include="ViewModels\ProductCatalog\ProductSearchResultView.cs" />

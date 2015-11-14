@@ -8,6 +8,9 @@ using EA.JP.Ecommerce.Services.Interfaces;
 using StructureMap;
 using StructureMap.Configuration.DSL;
 using EA.JP.Ecommerce.Infrastructure.Email;
+using EA.JP.Ecommerce.Model.Basket;
+using EA.JP.Ecommerce.Model.Shipping;
+using EA.JP.Ecommerce.Infrastructure.CookieStorage;
 
 namespace EA.JP.Ecommerce.WEB.MVC.UI
 {
@@ -26,7 +29,10 @@ namespace EA.JP.Ecommerce.WEB.MVC.UI
         {
             public ControllerRegistry()
             {
-                // Repositories                                
+                // Repositories   
+                For<IBasketRepository>().Use<Repository.NH.Repositories.BasketRepository>();
+                For<IDeliveryOptionRepository>().Use<Repository.NH.Repositories.DeliveryOptionRepository>();
+
                 For<ICategoryRepository>().Use<Repository.NH.Repositories.CategoryRepository>();
                 For<IProductTitleRepository>().Use<Repository.NH.Repositories.ProductTitleRepository>();
                 For<IProductRepository>().Use<Repository.NH.Repositories.ProductRepository>();
@@ -34,6 +40,8 @@ namespace EA.JP.Ecommerce.WEB.MVC.UI
 
                 // Product Catalogue                                         
                 For<IProductCatalogService>().Use<ProductCatalogService>();
+                For<IBasketService>().Use<BasketService>();
+                For<ICookieStorageService>().Use<CookieStorageService> ();
 
                 // Application Settings                 
                 For<IApplicationSettings>().Use<WebConfigApplicationSettings>();
