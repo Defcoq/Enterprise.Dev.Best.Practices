@@ -22,16 +22,16 @@ namespace EA.DAL.ORM.Library.UI.Web
 
             if (persistenceStrategy == "EF")
             {
-                //uow = new Repository.EF.EFUnitOfWork();
-                //bookRespository = new Repository.EF.Repositories.BookRepository(uow);
-                //bookTitleRepository = new Repository.EF.Repositories.BookTitleRepository(uow);
-                //memberRespository = new Repository.EF.Repositories.MemberRepository(uow);
+                uow = new Repository.EF.EFUnitOfWork();
+                bookRespository = new Repository.EF.Repositories.BookRepository(uow);
+                bookTitleRepository = new Repository.EF.Repositories.BookTitleRepository(uow);
+                memberRespository = new Repository.EF.Repositories.MemberRepository(uow);
 
                 #region not implemented yet
-                uow = new Repository.NH.NHUnitOfWork();
-                bookRespository = new Repository.NH.Repositories.BookRepository(uow);
-                bookTitleRepository = new Repository.NH.Repositories.BookTitleRepository(uow);
-                memberRespository = new Repository.NH.Repositories.MemberRepository(uow);
+                //uow = new Repository.NH.NHUnitOfWork();
+                //bookRespository = new Repository.NH.Repositories.BookRepository(uow);
+                //bookTitleRepository = new Repository.NH.Repositories.BookTitleRepository(uow);
+                //memberRespository = new Repository.NH.Repositories.MemberRepository(uow);
                 #endregion
             }
             else

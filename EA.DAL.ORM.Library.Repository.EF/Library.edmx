@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_Books">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Copies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MemberId" Type="uniqueidentifier" />
+          <Property Name="BookISBN" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="t_Loans">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CopyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MemberId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LoanDate" Type="datetime" Nullable="false" />
+          <Property Name="ReturnDate" Type="datetime" />
+          <Property Name="DateForReturn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Members">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Loans_Copies">
+          <End Role="t_Copies" Type="Self.t_Copies" Multiplicity="1" />
+          <End Role="t_Loans" Type="Self.t_Loans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Copies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="t_Loans">
+              <PropertyRef Name="CopyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loans_Members">
+          <End Role="t_Members" Type="Self.t_Members" Multiplicity="1" />
+          <End Role="t_Loans" Type="Self.t_Loans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Members">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="t_Loans">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Copies_t_Books">
+          <End Role="t_Books" Type="Self.t_Books" Multiplicity="0..1" />
+          <End Role="t_Copies" Type="Self.t_Copies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Books">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="t_Copies">
+              <PropertyRef Name="BookISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Copies_t_Members">
+          <End Role="t_Members" Type="Self.t_Members" Multiplicity="0..1" />
+          <End Role="t_Copies" Type="Self.t_Copies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Members">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="t_Copies">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LibraryModelStoreContainer">
+          <EntitySet Name="t_Books" EntityType="Self.t_Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Copies" EntityType="Self.t_Copies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Loans" EntityType="Self.t_Loans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Members" EntityType="Self.t_Members" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Loans_Copies" Association="Self.FK_Loans_Copies">
+            <End Role="t_Copies" EntitySet="t_Copies" />
+            <End Role="t_Loans" EntitySet="t_Loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loans_Members" Association="Self.FK_Loans_Members">
+            <End Role="t_Members" EntitySet="t_Members" />
+            <End Role="t_Loans" EntitySet="t_Loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Copies_t_Books" Association="Self.FK_t_Copies_t_Books">
+            <End Role="t_Books" EntitySet="t_Books" />
+            <End Role="t_Copies" EntitySet="t_Copies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Copies_t_Members" Association="Self.FK_t_Copies_t_Members">
+            <End Role="t_Members" EntitySet="t_Members" />
+            <End Role="t_Copies" EntitySet="t_Copies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EA.DAL.ORM.Library.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BookTitle">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MemberId" Type="Guid" />
+          <Property Name="BookISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Title" Relationship="Self.FK_t_Copies_t_Books" FromRole="t_Copies" ToRole="t_Books" />
+          <NavigationProperty Name="OnLoanTo" Relationship="Self.FK_t_Copies_t_Members" FromRole="t_Copies" ToRole="t_Members" />
+        </EntityType>
+        <EntityType Name="Loan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CopyId" Type="Guid" Nullable="false" />
+          <Property Name="MemberId" Type="Guid" Nullable="false" />
+          <Property Name="LoanDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+          <Property Name="DateForReturn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Loans_Copies" FromRole="t_Loans" ToRole="t_Copies" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Loans_Members" FromRole="t_Loans" ToRole="t_Members" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Loans" Relationship="Self.FK_Loans_Members" FromRole="t_Members" ToRole="t_Loans" />
+        </EntityType>
+        <Association Name="FK_t_Copies_t_Books">
+          <End Role="t_Books" Type="EA.DAL.ORM.Library.Model.BookTitle" Multiplicity="0..1" />
+          <End Role="t_Copies" Type="EA.DAL.ORM.Library.Model.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Books">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="t_Copies">
+              <PropertyRef Name="BookISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loans_Copies">
+          <End Role="t_Copies" Type="EA.DAL.ORM.Library.Model.Book" Multiplicity="1" />
+          <End Role="t_Loans" Type="EA.DAL.ORM.Library.Model.Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Copies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="t_Loans">
+              <PropertyRef Name="CopyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Copies_t_Members">
+          <End Role="t_Members" Type="EA.DAL.ORM.Library.Model.Member" Multiplicity="0..1" />
+          <End Role="t_Copies" Type="EA.DAL.ORM.Library.Model.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Members">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="t_Copies">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loans_Members">
+          <End Role="t_Members" Type="EA.DAL.ORM.Library.Model.Member" Multiplicity="1" />
+          <End Role="t_Loans" Type="EA.DAL.ORM.Library.Model.Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Members">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="t_Loans">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LibraryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_Books" EntityType="EA.DAL.ORM.Library.Model.BookTitle" />
+          <EntitySet Name="t_Copies" EntityType="EA.DAL.ORM.Library.Model.Book" />
+          <EntitySet Name="t_Loans" EntityType="EA.DAL.ORM.Library.Model.Loan" />
+          <EntitySet Name="t_Members" EntityType="EA.DAL.ORM.Library.Model.Member" />
+          <AssociationSet Name="FK_t_Copies_t_Books" Association="Self.FK_t_Copies_t_Books">
+            <End Role="t_Books" EntitySet="t_Books" />
+            <End Role="t_Copies" EntitySet="t_Copies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loans_Copies" Association="Self.FK_Loans_Copies">
+            <End Role="t_Copies" EntitySet="t_Copies" />
+            <End Role="t_Loans" EntitySet="t_Loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Copies_t_Members" Association="Self.FK_t_Copies_t_Members">
+            <End Role="t_Members" EntitySet="t_Members" />
+            <End Role="t_Copies" EntitySet="t_Copies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loans_Members" Association="Self.FK_Loans_Members">
+            <End Role="t_Members" EntitySet="t_Members" />
+            <End Role="t_Loans" EntitySet="t_Loans" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibraryModelStoreContainer" CdmEntityContainer="LibraryEntities">
+          <EntitySetMapping Name="t_Books">
+            <EntityTypeMapping TypeName="EA.DAL.ORM.Library.Model.BookTitle">
+              <MappingFragment StoreEntitySet="t_Books">
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Copies">
+            <EntityTypeMapping TypeName="EA.DAL.ORM.Library.Model.Book">
+              <MappingFragment StoreEntitySet="t_Copies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="BookISBN" ColumnName="BookISBN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Loans">
+            <EntityTypeMapping TypeName="EA.DAL.ORM.Library.Model.Loan">
+              <MappingFragment StoreEntitySet="t_Loans">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CopyId" ColumnName="CopyId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="LoanDate" ColumnName="LoanDate" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="DateForReturn" ColumnName="DateForReturn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Members">
+            <EntityTypeMapping TypeName="EA.DAL.ORM.Library.Model.Member">
+              <MappingFragment StoreEntitySet="t_Members">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
