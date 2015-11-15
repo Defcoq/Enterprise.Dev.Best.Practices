@@ -56,3 +56,9 @@ INFO  2015-11-14 20:57:05,989    74ms JPLogger               Log                
 INFO  2015-11-14 21:03:27,709    88ms JPLogger               Log                - Application Started
 INFO  2015-11-14 21:12:32,485    90ms JPLogger               Log                - Application Started
 INFO  2015-11-14 21:16:41,019    84ms JPLogger               Log                - Application Started
+INFO  2015-11-14 23:57:18,102    73ms JPLogger               Log                - Application Started
+INFO  2015-11-15 00:01:22,371    77ms JPLogger               Log                - Application Started
+INFO  2015-11-15 00:04:08,399   108ms JPLogger               Log                - Application Started
+INFO  2015-11-15 00:10:33,533    75ms JPLogger               Log                - Application Started
+INFO  2015-11-15 00:14:48,773    96ms JPLogger               Log                - Application Started
+INFO  2015-11-15 00:25:16,245    85ms JPLogger               Log                - Application Started

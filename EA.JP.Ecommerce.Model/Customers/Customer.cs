@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EA.JP.Ecommerce.Infrastructure.Domain;
+using EA.JP.Ecommerce.Model.Orders;
 
 namespace EA.JP.Ecommerce.Model.Customers
 {
@@ -15,6 +16,7 @@ namespace EA.JP.Ecommerce.Model.Customers
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Email { get; set; }
+        public IList<Order> Orders { get; set; }
 
         public void AddAddress(DeliveryAddress deliveryAddress)
         {

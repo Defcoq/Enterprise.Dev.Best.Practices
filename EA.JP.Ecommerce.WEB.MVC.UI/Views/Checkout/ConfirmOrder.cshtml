@@ -1,0 +1,59 @@
+﻿@using EA.JP.Ecommerce.Services.ViewModels
+@using EA.JP.Ecommerce.Controllers.ViewModels.Checkout
+@model OrderConfirmationView
+@{
+    ViewBag.Title = "ConfirmOrder";
+    Layout = "~/Views/Shared/_Checkout.cshtml";
+}
+
+@section TitleContent
+{
+    ConfirmOrder
+}
+   
+
+   
+
+        <h2>Confirm Order</h2>
+
+        @using (Html.BeginForm("PlaceOrder", "Checkout")) {
+
+       <span> Delivery Address</span>
+        <select id="DeliveryAddress" name="DeliveryAddress">
+            
+            @foreach (DeliveryAddressView deliveryAddress in Model.DeliveryAddresses)
+            {
+            
+            <option value="@Html.Encode(deliveryAddress.Id)">
+                @Html.Encode(deliveryAddress.Name)
+            </option>
+            
+            }
+        </select>
+
+            <span>-</span>@Html.ActionLink("Create new address", "AddDeliveryAddress", "Checkout")
+
+        <ul>
+            @foreach(BasketItemView item in Model.Basket.Items) {
+            <li>
+                @Html.Encode(item.Qty)  of @Html.Encode(item.ProductName)  at @Html.Encode(String.Format("{0:F}", item.ProductPrice))
+            </li>
+            }
+        </ul>
+
+        <p>Total: @Html.Encode(String.Format("{0:F}", Model.Basket.ItemsTotal))</p>
+
+        <p>
+            DeliveryCharge: @Html.Encode(String.Format("{0:F}",Model.Basket.DeliveryCost)) 
+        </p>
+
+        <p>
+            Total: @Html.Encode(String.Format("{0:F}",
+            Model.Basket.BasketTotal )) 
+        </p>
+
+        <input id="Submit" type="submit" value="Place Order" />
+        }
+    
+
+

@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using EA.JP.Ecommerce.Model;
 using EA.JP.Ecommerce.Model.Basket;
 using EA.JP.Ecommerce.Model.Categories;
 using EA.JP.Ecommerce.Model.Customers;
+using EA.JP.Ecommerce.Model.Orders;
+using EA.JP.Ecommerce.Model.Orders.States;
 using EA.JP.Ecommerce.Model.Products;
 using EA.JP.Ecommerce.Model.Shipping;
 using EA.JP.Ecommerce.Services.ViewModels;
@@ -36,9 +39,31 @@ namespace EA.JP.Ecommerce.Services
             Mapper.CreateMap<Customer, CustomerView>();
             Mapper.CreateMap<DeliveryAddress, DeliveryAddressView>();
 
+
+            // Orders
+            Mapper.CreateMap<Model.Orders.Order, OrderView>();
+            Mapper.CreateMap<OrderItem, OrderItemView>();
+            Mapper.CreateMap<Address, DeliveryAddressView>();
+            Mapper.CreateMap<Order, OrderSummaryView>()
+                .ForMember(o => o.IsSubmitted,ov => ov.ResolveUsing<OrderStatusResolver>());
             // Global Money Formatter
             //Mapper.AddFormatter<MoneyFormatter>();
 
+        }
+    }
+
+    public class OrderStatusResolver : ValueResolver<Order, bool>
+    {
+        protected override bool ResolveCore(Order source)
+        {
+            if (source.Status == OrderStatus.Submitted)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 

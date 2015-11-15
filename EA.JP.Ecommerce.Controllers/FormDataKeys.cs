@@ -11,6 +11,7 @@ namespace EA.JP.Ecommerce.Controllers
         Email,
         FirstName,
         SecondName,
+        DeliveryAddress
     }
 
 }

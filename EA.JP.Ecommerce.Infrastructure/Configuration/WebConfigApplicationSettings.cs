@@ -17,6 +17,16 @@ namespace EA.JP.Ecommerce.Infrastructure.Configuration
             }
         }
 
+        public string PayPalBusinessEmail
+        {
+            get { return ConfigurationManager.AppSettings["PayPalBusinessEmail"]; }
+        }
+
+        public string PayPalPaymentPostToUrl
+        {
+            get { return ConfigurationManager.AppSettings["PayPalPaymentPostToUrl"]; }
+        }
+
         public string LoggerName
         {
             get { return ConfigurationManager.AppSettings["LoggerName"]; }

@@ -20,6 +20,7 @@ namespace EA.JP.Ecommerce.WEB.MVC.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             BootStrapper.ConfigureDependencies();
+            Controllers.AutoMapperBootStrapper.ConfigureAutoMapper();
 
             Services.AutoMapperBootStrapper.ConfigureAutoMapper();
 

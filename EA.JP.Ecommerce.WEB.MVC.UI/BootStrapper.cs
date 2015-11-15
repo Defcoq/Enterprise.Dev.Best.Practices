@@ -14,6 +14,11 @@ using EA.JP.Ecommerce.Infrastructure.CookieStorage;
 using EA.JP.Ecommerce.Model.Customers;
 using EA.JP.Ecommerce.Infrastructure.Authentication;
 using EA.JP.Ecommerce.Controllers.ActionArguments;
+using EA.JP.Ecommerce.Model.Orders;
+using EA.JP.Ecommerce.Infrastructure.Payments;
+using EA.JP.Ecommerce.Infrastructure.Domain.Events;
+using EA.JP.Ecommerce.Model.Orders.Events;
+using EA.JP.Ecommerce.Services.DomainEventHandlers;
 
 namespace EA.JP.Ecommerce.WEB.MVC.UI
 {
@@ -33,6 +38,7 @@ namespace EA.JP.Ecommerce.WEB.MVC.UI
             public ControllerRegistry()
             {
                 // Repositories
+                For<IOrderRepository>().Use<Repository.NH.Repositories.OrderRepository>();
                 For<ICustomerRepository>().Use<Repository.NH.Repositories.CustomerRepository>();
                 For<IBasketRepository>().Use<Repository.NH.Repositories.BasketRepository>();
                 For<IDeliveryOptionRepository>().Use<Repository.NH.Repositories.DeliveryOptionRepository>();
@@ -41,6 +47,20 @@ namespace EA.JP.Ecommerce.WEB.MVC.UI
                 For<IProductTitleRepository>().Use<Repository.NH.Repositories.ProductTitleRepository>();
                 For<IProductRepository>().Use<Repository.NH.Repositories.ProductRepository>();
                 For<IUnitOfWork>().Use<Repository.NH.NHUnitOfWork>();
+
+                // Order Service
+                For<IOrderService>().Use<OrderService>();
+
+                // Payment
+                For<IPaymentService>().Use<PayPalPaymentService>();
+
+                // Handlers for Domain Events
+                For<IDomainEventHandlerFactory>().Use<StructureMapDomainEventHandlerFactory>();
+                For<IDomainEventHandler<OrderSubmittedEvent>>().Add<OrderSubmittedHandler>();
+
+                // Product Catalogue & Category Service with Caching Layer Registration
+              //  this.InstanceOf<IProductCatalogService>().Is.OfConcreteType<ProductCatalogService>()
+                //   .WithName("RealProductCatalogueService");
 
                 // Product Catalogue                                         
                 For<IProductCatalogService>().Use<ProductCatalogService>();

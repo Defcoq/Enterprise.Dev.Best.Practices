@@ -14,6 +14,11 @@
               not-null="true" />
     </property>
 
+    <bag name="Orders" inverse="false" cascade="all-delete-orphan" lazy="true" >
+      <key column="CustomerId"/>
+      <one-to-many class="EA.JP.Ecommerce.Model.Orders.Order"></one-to-many>
+    </bag>
+
     <property name="FirstName">
       <column name="FirstName" sql-type="nvarchar(100)" not-null="true" />
     </property>

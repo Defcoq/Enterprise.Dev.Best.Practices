@@ -1,0 +1,30 @@
+﻿@using EA.JP.Ecommerce.Services.ViewModels
+@using EA.JP.Ecommerce.Controllers.ViewModels.Checkout
+@model DeliveryAddressView
+@{
+    ViewBag.Title = "AddDeliveryAddress";
+    Layout = "~/Views/Shared/_Checkout.cshtml";
+}
+
+
+@section TitleContent
+{
+     AddDeliveryAddress
+}
+
+
+        <h2>Add DeliveryAddress</h2>
+
+        @using (Html.BeginForm("AddDeliveryAddress", "Checkout")) {
+
+        Html.RenderPartial("~/Views/Shared/_AddressEdit.cshtml", Model); 
+        <p>
+            <input type="submit" value="Create Address and Checkout" />
+        </p>
+         } 
+
+        <div>
+            @Html.ActionLink("Check Out", "Checkout", "Checkout")
+        </div>
+
+

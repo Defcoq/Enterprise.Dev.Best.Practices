@@ -1,0 +1,38 @@
+@using EA.JP.Ecommerce.Infrastructure.Payments
+@using EA.JP.Ecommerce.Controllers.ViewModels.CustomerAccount
+@model PaymentPostData
+@{
+    ViewBag.Title = "Payment Post";
+    Layout = "~/Views/Shared/_Checkout.cshtml";
+}
+
+@section TitleContent
+{
+   Payment Post
+}
+
+    <h2>Payment Post</h2>
+    
+    <script type="text/javascript">
+    
+    $(document).ready(function() {
+
+            $('#paymentForm').submit();
+
+            });
+    </script>
+      
+    
+    <form id="paymentForm" name="paymentForm"
+          action="@Html.Encode(Model.PaymentPostToUrl) " method="post">
+     
+    @foreach (String postDataKey in Model.PostDataAndValue.AllKeys) {
+           @Html.Hidden(postDataKey, Model.PostDataAndValue[postDataKey])
+    } 
+    
+    <input id="Submit" type="submit"
+           value="Click here if page doesn't auto redirect in 5 seconds" />
+            
+    </form>
+    
+

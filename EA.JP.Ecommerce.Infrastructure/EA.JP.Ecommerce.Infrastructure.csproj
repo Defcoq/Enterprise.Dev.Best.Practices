@@ -75,6 +75,12 @@
     <Compile Include="CookieStorage\ICookieStorageService.cs" />
     <Compile Include="Domain\BusinessRule.cs" />
     <Compile Include="Domain\EntityBase.cs" />
+    <Compile Include="Domain\Events\DomainEvents.cs" />
+    <Compile Include="Domain\Events\IDomainEvent.cs" />
+    <Compile Include="Domain\Events\IDomainEventHandler.cs" />
+    <Compile Include="Domain\Events\IDomainEventHandlerFactory.cs" />
+    <Compile Include="Domain\Events\IEnumerableExtensions.cs" />
+    <Compile Include="Domain\Events\StructureMapDomainEventHandlerFactory.cs" />
     <Compile Include="Domain\IAggregateRoot.cs" />
     <Compile Include="Domain\IReadOnlyRepository.cs" />
     <Compile Include="Domain\IRepository.cs" />
@@ -89,6 +95,12 @@
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Log4NetAdapter.cs" />
     <Compile Include="Logging\LoggingFactory.cs" />
+    <Compile Include="Payments\IPaymentService.cs" />
+    <Compile Include="Payments\OrderItemPaymentRequest.cs" />
+    <Compile Include="Payments\OrderPaymentRequest.cs" />
+    <Compile Include="Payments\PaymentPostData.cs" />
+    <Compile Include="Payments\PayPalPaymentService.cs" />
+    <Compile Include="Payments\TransactionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Querying\CriteriaOperator.cs" />
     <Compile Include="Querying\Criterion.cs" />
@@ -102,9 +114,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Payments\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

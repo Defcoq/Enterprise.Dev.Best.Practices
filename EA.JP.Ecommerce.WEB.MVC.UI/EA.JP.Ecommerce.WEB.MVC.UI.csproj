@@ -172,6 +172,9 @@
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Views\Payment\PaymentCancel.cshtml" />
+    <None Include="Views\Payment\PaymentComplete.cshtml" />
+    <None Include="Views\Payment\PaymentPost.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\Categories.cshtml" />
     <Content Include="Views\Shared\_ProductCatalog.cshtml" />
@@ -210,6 +213,11 @@
     <Content Include="Views\Shared\_JanrainLogin.cshtml" />
     <Content Include="Views\AccountLogOn\LogOn.cshtml" />
     <Content Include="Views\AccountRegister\Register.cshtml" />
+    <Content Include="Views\Shared\_Checkout.cshtml" />
+    <Content Include="Views\Checkout\ConfirmOrder.cshtml" />
+    <Content Include="Views\Checkout\AddDeliveryAddress.cshtml" />
+    <Content Include="Views\Order\List.cshtml" />
+    <Content Include="Views\Order\Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

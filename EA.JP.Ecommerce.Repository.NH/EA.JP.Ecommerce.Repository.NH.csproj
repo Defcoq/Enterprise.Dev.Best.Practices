@@ -67,6 +67,7 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\DeliveryOptionRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ProductTitleRepository.cs" />
     <Compile Include="Repositories\QueryTranslator.cs" />
@@ -108,6 +109,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Mapping\Customer.hbm.xml" />
     <EmbeddedResource Include="Mapping\DeliveryAddress.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\IOrderState.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Order.hbm.xml" />
+    <EmbeddedResource Include="Mapping\OrderItem.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

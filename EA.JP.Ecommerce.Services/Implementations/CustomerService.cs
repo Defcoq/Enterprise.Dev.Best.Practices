@@ -69,7 +69,11 @@ namespace EA.JP.Ecommerce.Services.Implementations
             if (customer != null)
             {
                 response.CustomerFound = true;
-                response.Customer = customer.ConvertToCustomerDetailView();               
+                response.Customer = customer.ConvertToCustomerDetailView();
+                if (request.LoadOrderSummary)
+                    response.Orders = customer.Orders
+                     .OrderByDescending(o => o.Created).ConvertToOrderSummaryViews();
+
             }
             else
                 response.CustomerFound = false;
